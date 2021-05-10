@@ -8,7 +8,11 @@
     "serve": "webpack server --hot --mode development --config webpack.config.ts --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-"keywords": ["vue","webpack","typescript"],
+  "keywords": [
+    "vue",
+    "webpack",
+    "typescript"
+  ],
   "author": {
     "name": "leydev",
     "email": "leydev.contato@gmail.com",
@@ -23,6 +27,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
+    "ts-loader": "^9.1.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4",
     "vue-loader": "^15.9.6",

@@ -9,6 +9,7 @@ function canExtractCss(env: string){
 }
 
 const config: Configuration = {
+  entry: 'src/main.ts',
   watchOptions: {
     ignored: [
       'node_modules',
@@ -33,6 +34,14 @@ const config: Configuration = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
+      },
       { 
         test: /\.vue$/, 
         loader: 'vue-loader'
@@ -60,7 +69,7 @@ const config: Configuration = {
       {
         test: /\.css$/,
         use: [
-          canExtractCss(process.env.NODE_ENV),
+          canExtractCss(process.env.NODE_ENV as string),
           'css-loader'
         ]
       }
