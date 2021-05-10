@@ -3,13 +3,13 @@ import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-function canExtractCss(env: string){
+function canExtractCss(env: string) {
   if (env === 'production') return MiniCssExtractPlugin.loader;
   return 'vue-style-loader';
 }
 
 const config: Configuration = {
-  entry: 'src/main.ts',
+  entry: './src/main.ts',
   watchOptions: {
     ignored: [
       'node_modules',
@@ -35,16 +35,8 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-        }
-      },
-      { 
-        test: /\.vue$/, 
-        loader: 'vue-loader'
+        test: /\.vue$/,
+        loader: 'vue-loader',
       },
       {
         test: /\.(png|jpe?g|gif|webm|mp4|svg)$/,
@@ -57,7 +49,7 @@ const config: Configuration = {
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
@@ -70,17 +62,17 @@ const config: Configuration = {
         test: /\.css$/,
         use: [
           canExtractCss(process.env.NODE_ENV as string),
-          'css-loader'
-        ]
-      }
-    ]
+          'css-loader',
+        ],
+      },
+    ],
   },
   plugins: [
     // make sure to include the plugin for the magic
     new VueLoaderPlugin() as WebpackPluginInstance,
     new HtmlWebpackPlugin({ template: './public/index.html' }),
-    new MiniCssExtractPlugin({ filename: 'style.css' })
-  ]
-}
+    new MiniCssExtractPlugin({ filename: 'style.css' }),
+  ],
+};
 
 export default config;

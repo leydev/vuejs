@@ -1,14 +1,31 @@
 <template>
-    <div class="container">
-        <div class="center">
-            <img src="./assets/logo.png" alt="" srcset="">
-            <h1>Vue.js</h1>
-        </div>
+  <div class="container">
+    <div class="center">
+      <img
+        src="./assets/logo.png"
+        alt=""
+        srcset=""
+      >
+      <h1>Vue.js {{ val }}</h1>
+      <input
+        v-model="val"
+        type="search"
+      >
     </div>
+  </div>
 </template>
 
-<style>
+<script lang="ts">
+import Vue from 'vue';
 
+export default Vue.extend({
+  data: () => ({
+    val: '',
+  }),
+});
+</script>
+
+<style>
     :root{
         --logo-size: 10rem
     }
