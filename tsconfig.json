@@ -2,12 +2,25 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "target": "ESNext",
-        "module": "ESNext",
+        "module": "CommonJS",
         "strict": true,
         "jsx": "preserve",
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "baseUrl": "./src",
+        "outDir": "build",
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "paths": {
+            "@/*": [ "*"],
+            "@/components/*": [
+                "components/",
+                "components/*"
+            ]
+        }
     },
     "exclude": [
         "node_modules"
-    ]
+    ],
 }

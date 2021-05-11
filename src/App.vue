@@ -1,18 +1,58 @@
 <template>
-  <div class="container">
-    <div class="center">
-      <img
-        src="./assets/logo.png"
-        alt=""
-        srcset=""
+  <v-app>
+    <v-app-bar
+      color="deep-purple accent-4"
+      dense
+      dark
+      app
+    >
+      <v-app-bar-nav-icon />
+
+      <v-toolbar-title>Page title</v-toolbar-title>
+
+      <v-spacer />
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-menu
+        left
+        bottom
       >
-      <h1>Vue.js {{ val }}</h1>
-      <input
-        v-model="val"
-        type="search"
-      >
-    </div>
-  </div>
+        <template #activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="n in 5"
+            :key="n"
+            @click="() => {}"
+          >
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
+    <v-main>
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <!-- If using vue-router -->
+        <router-view />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -26,29 +66,5 @@ export default Vue.extend({
 </script>
 
 <style>
-    :root{
-        --logo-size: 10rem
-    }
-    html, body{
-        margin: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .container{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    h1{
-        font-family: sans-serif;
-    }
-    img{
-        width: var(--logo-size);
-        height: var(--logo-size);
-    }
-    .center{
-        text-align: center;
-    }
+
 </style>

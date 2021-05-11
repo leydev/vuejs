@@ -73,6 +73,16 @@ const config: Configuration = {
     new HtmlWebpackPlugin({ template: './public/index.html' }),
     new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
+  resolve: {
+    extensions: [
+      ' ',
+      '.vue',
+      '.tsx',
+      '.ts',
+      '.js',
+    ],
+    enforceExtension: false,
+  },
 };
 
 export default config;
