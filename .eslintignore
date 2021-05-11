@@ -1,0 +1,5 @@
+node_modules
+*.js
+build
+src/main/database/migration
+gulpfile*
